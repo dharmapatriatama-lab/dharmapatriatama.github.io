@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Palet Warna Baru: Hitam Elegan & Emas */
+            /* Palet Warna: Hitam Elegan & Emas */
             --bg-color: #121212;
             --text-color: #F5F5F5;
             --accent-color: #FFD700; /* Emas */
@@ -61,8 +61,8 @@
         
         .main-message p { font-size: 1.5rem; line-height: 1.7; max-width: 600px; margin: 0 auto; }
         
-        .heart-rain-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
-        .heart { position: absolute; top: -10%; font-size: 1.5rem; animation: fall linear infinite; }
+        .rain-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
+        .item { position: absolute; top: -10%; font-size: 1.5rem; animation: fall linear infinite; }
         
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
         
@@ -85,7 +85,7 @@
 </head>
 <body>
 
-    <div id="heart-rain-container"></div>
+    <div id="rain-container"></div>
     <audio id="bg-music" loop src="https://cdn.pixabay.com/download/audio/2022/02/12/audio_8267252a6d.mp3"></audio>
     <button id="music-toggle">🔊</button>
 
@@ -149,7 +149,7 @@
                 initialScreen.style.display = 'none';
                 messageScreen.classList.add('visible');
                 setTimeout(() => {
-                    createHearts();
+                    createRain();
                     typeWriter(apologyText, 'apology-text', 60, () => {
                         forgiveButton.classList.add('visible');
                     });
@@ -165,19 +165,19 @@
             }, 500);
         }
 
-        function createHearts() {
-            const container = document.getElementById('heart-rain-container');
-            const hearts = ['❤️', '💖', '💕', '💛', '💙'];
+        function createRain() {
+            const container = document.getElementById('rain-container');
+            const items = ['❤️', '💖', '💕', '🌸', '🌺', '🌷'];
             setInterval(() => {
-                const heart = document.createElement('div');
-                heart.classList.add('heart');
-                heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
-                heart.style.left = `${Math.random() * 100}vw`;
-                heart.style.animationDuration = `${Math.random() * 3 + 4}s`;
-                heart.style.opacity = Math.random() * 0.7 + 0.3;
-                heart.style.fontSize = `${Math.random() * 1 + 1}rem`;
-                container.appendChild(heart);
-                setTimeout(() => { heart.remove(); }, 7000);
+                const item = document.createElement('div');
+                item.classList.add('item');
+                item.innerText = items[Math.floor(Math.random() * items.length)];
+                item.style.left = `${Math.random() * 100}vw`;
+                item.style.animationDuration = `${Math.random() * 3 + 4}s`;
+                item.style.opacity = Math.random() * 0.7 + 0.3;
+                item.style.fontSize = `${Math.random() * 1 + 1}rem`;
+                container.appendChild(item);
+                setTimeout(() => { item.remove(); }, 7000);
             }, 150);
         }
 
