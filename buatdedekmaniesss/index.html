@@ -3,24 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sebuah Pesan Untukmu</title>
+    <title>buat dedek maniess</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Palet Warna: Hitam Elegan & Emas */
-            --bg-color: #121212;
+            /* Palet Warna: Elegan Hitam dengan Aksen Ungu Lavender */
+            --bg-grad-1: #121212;
+            --bg-grad-2: #2c1d3e; /* Sentuhan ungu gelap */
             --text-color: #F5F5F5;
-            --accent-color: #FFD700; /* Emas */
-            --button-bg: rgba(255, 255, 255, 0.1);
-            --button-hover-bg: rgba(255, 255, 255, 0.2);
+            --accent-color: #bb86fc; /* Ungu lavender */
+            --button-bg: rgba(187, 134, 252, 0.15);
+            --button-hover-bg: rgba(187, 134, 252, 0.25);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--bg-color);
+            background: linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2));
+            background-size: 200% 200%;
+            animation: gradient-flow 10s ease infinite;
             color: var(--text-color);
             font-family: 'Poppins', sans-serif;
             display: flex;
@@ -29,6 +32,12 @@
             height: 100vh;
             overflow: hidden;
             text-align: center;
+        }
+
+        @keyframes gradient-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .container {
@@ -66,7 +75,7 @@
         
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
         
-        .action-button { display: inline-block; margin-top: 30px; padding: 15px 30px; font-size: 1rem; font-weight: bold; color: var(--text-color); background-color: var(--button-bg); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 50px; cursor: pointer; text-decoration: none; transition: background-color 0.3s, transform 0.2s; opacity: 0; transform: translateY(20px); }
+        .action-button { display: inline-block; margin-top: 30px; padding: 15px 30px; font-size: 1rem; font-weight: bold; color: var(--text-color); background-color: var(--button-bg); border: 1px solid rgba(187, 134, 252, 0.3); border-radius: 50px; cursor: pointer; text-decoration: none; transition: background-color 0.3s, transform 0.2s; opacity: 0; transform: translateY(20px); }
         .action-button.visible { animation: slide-fade-in 1s ease-out forwards; }
         
         @keyframes slide-fade-in { to { opacity: 1; transform: translateY(0); } }
@@ -75,7 +84,7 @@
         
         #final-screen { position: absolute; opacity: 0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s; pointer-events: none; }
         #final-screen.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
-        #final-screen h1 { font-size: 2.5rem; color: var(--accent-color); }
+        #final-screen h1 { font-size: 2.5rem; color: var(--accent-color); text-shadow: 0 0 10px var(--accent-color); }
         #final-screen p { margin-top: 10px; font-size: 1.2rem; }
         #final-screen a { background-color: #25D366; border: none; }
         #final-screen a:hover { background-color: #128C7E; }
@@ -99,13 +108,13 @@
         <div class="main-message">
             <p id="apology-text"></p>
         </div>
-        <button id="forgive-button" class="action-button" onclick="showFinalScreen()">Aku maafin kamu</button>
+        <button id="forgive-button" class="action-button" onclick="showFinalScreen()">Yes, I forgive you</button>
     </div>
 
     <div id="final-screen" class="container">
-        <h1>Makasih banyak! ❤️</h1>
-        <p>Kamu teman yang super baik.</p>
-        <a href="https://wa.me/[GANTI_NOMOR_KAMU]?text=Okee, dimaafin nih.. lain kali jangan gitu lagi yaaa" class="action-button visible" target="_blank">Chat aku sekarang</a>
+        <h1>Yay, thank you! ❤️</h1>
+        <p>You're the best!</p>
+        <a href="https://wa.me/[GANTI_NOMOR_KAMU]?text=Okeey, dimaafin nih.. lain kali jangan gitu lagi yaaa" class="action-button visible" target="_blank">Jangan lupa chat WhatsApp aku</a>
     </div>
 
     <script>
@@ -116,8 +125,9 @@
         const music = document.getElementById('bg-music');
         const musicToggle = document.getElementById('music-toggle');
 
-        const introText = "Hallo Dedek Maniesss... Aku tahu kamu lagi bete. Ada sesuatu yang pengen banget aku sampaikan ke kamu... Coba buka ya.";
-        const apologyText = "Maafin aku ya soal kemarin. Aku sadar kelakuanku itu salah dan udah bikin kamu nggak nyaman. Persahabatan kita itu penting banget buat aku, dan aku nggak mau ada jarak di antara kita. Please, forgive me ya ❤️.";
+        // Teks permintaan maaf tidak diubah sesuai permintaan
+        const introText = "Hallo Dedek Maniesss, kamu lagi kesal ya? Aku ada surat buat kamu nih, klik amplopnya ya...";
+        const apologyText = "Maafin aku ya kalau aku bikin kamu kesal. Aku bener-bener nggak ada niatan. Aku sangat menghargai kamu dan nggak mau kamu bete sama aku. Please forgive me ya ❤️.";
         
         let hasStarted = false;
 
@@ -138,7 +148,7 @@
             type();
         }
 
-        window.onload = () => { typeWriter(introText, 'intro-text', 60); };
+        window.onload = () => { typeWriter(introText, 'intro-text', 70); };
 
         function startSequence() {
             if (hasStarted) return;
@@ -150,7 +160,7 @@
                 messageScreen.classList.add('visible');
                 setTimeout(() => {
                     createRain();
-                    typeWriter(apologyText, 'apology-text', 60, () => {
+                    typeWriter(apologyText, 'apology-text', 80, () => {
                         forgiveButton.classList.add('visible');
                     });
                 }, 1500);
