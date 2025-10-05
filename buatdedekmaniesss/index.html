@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sebuah Pesan Untukmu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Palet Warna Baru: Hitam Elegan & Emas */
+            --bg-color: #121212;
+            --text-color: #F5F5F5;
+            --accent-color: #FFD700; /* Emas */
+            --button-bg: rgba(255, 255, 255, 0.1);
+            --button-hover-bg: rgba(255, 255, 255, 0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 90%;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        
+        #initial-screen { cursor: pointer; transition: opacity 0.5s, transform 0.5s; }
+        #initial-screen.hidden { opacity: 0; transform: scale(0.8); pointer-events: none; }
+        .envelope { font-size: 100px; animation: float 3s ease-in-out infinite; text-shadow: 0 0 15px var(--accent-color); }
+        
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        
+        .typing-text { margin-top: 20px; font-size: 1.2rem; min-height: 80px; max-width: 500px; }
+        .typing-text span { border-right: .15em solid var(--accent-color); animation: blink-caret .75s step-end infinite; }
+        
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--accent-color); } }
+        
+        #message-screen { position: absolute; opacity: 0; pointer-events: none; transform: scale(1.1); transition: opacity 0.7s, transform 0.7s; }
+        #message-screen.visible { opacity: 1; transform: scale(1); pointer-events: all; }
+        
+        .heart-zoom { position: fixed; top: 50%; left: 50%; font-size: 1px; transform: translate(-50%, -50%); animation: zoom-in-out 1.5s ease-in-out forwards; opacity:
